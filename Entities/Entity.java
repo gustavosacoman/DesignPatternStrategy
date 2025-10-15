@@ -9,6 +9,8 @@ public abstract class Entity {
     private double dexterity;
     private double life;
     private double mana;
+    private boolean stunned = false;
+    private boolean bleeding = false;
 
 
     private IWeapon equippedWeapon;
@@ -63,7 +65,7 @@ public abstract class Entity {
 
     public abstract void equipWeaponFromInventory(int index);
 
-    public abstract void passiveAbility();
+    // public abstract void passiveAbility();
 
     public abstract void showInventory();
 
@@ -82,4 +84,31 @@ public abstract class Entity {
         return name;
     }
 
+    public double getMana() 
+    {
+        return mana;
+    }
+    public void setMana(double mana) 
+    {
+        this.mana = mana;
+    }
+
+    public boolean isStunned() 
+    {
+        return stunned;
+    }
+
+    public void setStunned(boolean stunned) 
+    {
+        this.stunned = stunned;
+    }
+    
+    public boolean isBleeding() 
+    {
+        return bleeding;
+    }
+    public void setBleeding(boolean bleeding) 
+    {
+        this.bleeding = bleeding;
+    }
 }

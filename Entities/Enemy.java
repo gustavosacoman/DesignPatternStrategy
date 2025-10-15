@@ -7,12 +7,6 @@ public class Enemy extends Entity {
         super(20, 10, 5, 50, 100);
     }
 
-    @Override
-    public void passiveAbility() 
-    {
-        System.out.println("Habilidade Passiva do Inimigo: Aumenta a defesa em 10%.");
-    }
-
     @Deprecated
     @Override
     public void showInventory() 

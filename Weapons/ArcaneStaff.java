@@ -48,6 +48,7 @@ public class ArcaneStaff implements IWeapon {
 
         if (Math.random() < 0.30) { 
             System.out.println("Explosão Arcana! O inimigo está atordoado.");
+            
         }
     }
 }

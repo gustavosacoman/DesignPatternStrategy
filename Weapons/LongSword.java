@@ -2,6 +2,8 @@ package Weapons;
 
 
 import Entities.Entity;
+import Utils.RandomGeneratorUtil;
+
 
 public class LongSword implements IWeapon {
 
@@ -45,10 +47,13 @@ public class LongSword implements IWeapon {
     public void attack(Entity player, Entity enemy) 
     {
         System.out.println(player.getName() + " ataca " + enemy.getName() + " com a " + getName() + "!");
-        enemy.takeDamage(this.getBaseDamage());
+        
+        enemy.takeDamage(this.getBaseDamage() * 3);
 
-        if (Math.random() < 0.30) { 
-            System.out.println("Corte Profundo! O inimigo está sangrando.");
+        int randomValue = RandomGeneratorUtil.generateRandomInt(100);
+
+        if (randomValue < 35) { 
+            enemy.setBleeding(true);
         }
     }
 }

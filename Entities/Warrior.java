@@ -14,10 +14,12 @@ public class Warrior extends Entity {
         this.inventory = new Inventory(List.of(new LongSword(), new WarAxe()));
     }
 
+    // Passiva: Reduz o dano recebido em 20%
     @Override
-    public void passiveAbility() 
+    public void takeDamage(double damage) 
     {
-        System.out.println("Habilidade Passiva do Guerreiro: Aumenta a defesa em 5 pontos.");
+        damage = 0.8 * damage;
+        super.takeDamage(damage);
     }
 
     @Override

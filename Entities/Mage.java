@@ -7,16 +7,19 @@ import java.util.List;
 public class Mage extends Entity {
     
     public Inventory inventory;
+
     public Mage() 
     {
         super(5,18,7,70,150);
         this.inventory = new Inventory(List.of(new ArcaneStaff(), new DarkDagger()));
     }
 
+    // Passiva: Aumenta o dano mágico em 15%
     @Override
-    public void passiveAbility() 
+    public void takeDamage(double damage) 
     {
-        System.out.println("Habilidade Passiva do Mago: Aumenta o poder mágico em 15%.");
+        super.setMana(getMana() + 10);
+        super.takeDamage(damage);
     }
 
     @Override

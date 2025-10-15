@@ -1,6 +1,7 @@
 package Weapons;
 
 import Entities.Entity;
+import Utils.Console;
 
 public class DarkDagger implements  IWeapon {
     
@@ -42,10 +43,14 @@ public class DarkDagger implements  IWeapon {
     public void attack(Entity player, Entity enemy) 
     {
         System.out.println(player.getName() + " ataca " + enemy.getName() + " com a " + getName() + "!");
-        enemy.takeDamage(this.getBaseDamage());
-
-        if (Math.random() < 0.20) { 
-            System.out.println("Sombra Envolvente! O inimigo está envenenado.");
+        
+        if (enemy.isStunned()) {
+            Console.printSlowly("O inimigo está desprevinidodo! Ataque crítico!");
+            enemy.takeDamage(this.getBaseDamage() * 3);
+        }
+        else
+        {
+            enemy.takeDamage(this.getBaseDamage());
         }
     }
     

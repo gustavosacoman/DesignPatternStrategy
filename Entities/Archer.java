@@ -1,8 +1,10 @@
 package Entities;
 
+import Utils.Console;
 import Weapons.DarkDagger;
 import Weapons.ElvenBow;
 import java.util.List;
+import java.util.Random;
 
 public class Archer extends Entity {
     
@@ -14,10 +16,18 @@ public class Archer extends Entity {
         this.inventory = new Inventory(List.of(new ElvenBow(), new DarkDagger()) );
     }
 
+    // Passiva: 25% de chance de esquivar do ataque
     @Override
-    public void passiveAbility() 
+    public void takeDamage(double damage) 
     {
-        System.out.println("Habilidade Passiva do Arqueiro: Aumenta a chance de acerto crítico em 10%.");
+        long seed = System.currentTimeMillis();
+        Random randomGenerator = new Random(seed);
+        int numeroAleatorio = randomGenerator.nextInt(100);
+        if (numeroAleatorio < 25) {
+            damage = 0;
+            Console.printSlowly("O ataque foi esquivado!");
+        }
+        super.takeDamage(damage);
     }
 
     @Override
@@ -28,8 +38,6 @@ public class Archer extends Entity {
         System.out.println("2. Adaga Sombria");
         System.out.println("===========================================");
     }
-
-    
 
     @Override
     public void equipWeaponFromInventory(int index) 

@@ -1,8 +1,10 @@
 package Weapons;
 
 import Entities.Entity;
+import Utils.Console;
+import Utils.RandomGeneratorUtil;
 
-public class WarAxe implements  IWeapon {
+public class WarAxe implements IWeapon {
     
     @Override
     public String getName() 
@@ -43,11 +45,14 @@ public class WarAxe implements  IWeapon {
     @Override
     public void attack(Entity player, Entity enemy) 
     {
-        System.out.println(player.getName() + " ataca " + enemy.getName() + " com o " + getName() + "!");
+        enemy.setStunned(false);
+        Console.printSlowly(player.getName() + " ataca " + enemy.getName() + " com o " + getName() + "!");
         enemy.takeDamage(this.getBaseDamage());
+        
+        int numeroAleatorio = RandomGeneratorUtil.generateRandomInt(100);
 
-        if (Math.random() < 0.35) { 
-            System.out.println("Golpe Devastador! O inimigo está atordoado.");
+        if (numeroAleatorio < 25) { 
+            enemy.setStunned(true);
         }
     }
     

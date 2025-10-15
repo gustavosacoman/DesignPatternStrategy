@@ -5,7 +5,7 @@ import Entities.Enemy;
 import Entities.Entity;
 import Entities.Mage;
 import Entities.Warrior;
-import View.Console;
+import Utils.Console;
 import Weapons.ArcaneStaff;
 import Weapons.ElvenBow;
 import Weapons.LongSword;
@@ -86,6 +86,8 @@ public class Battle {
             System.out.println("3 - desistir");
             Console.printSlowly(">> ");
             int action = Console.readInt("");
+            
+            
 
             switch (action)
             {
@@ -95,7 +97,7 @@ public class Battle {
                 case 2:
                     player.showInventory();
                     int weaponIndex = Console.readInt("Escolha a arma pelo número: ");
-                    player.equipWeaponFromInventory(weaponIndex);
+                    player.equipWeaponFromInventory(weaponIndex - 1);
                 break;
                 case 3:
                     Console.printSlowly("Você fugiu da batalha!");
@@ -105,6 +107,18 @@ public class Battle {
                     break;
             }
 
+            if(enemy.isBleeding())
+            {
+                Console.printSlowly("O inimigo está sangrando!");
+                enemy.takeDamage(5);
+            }
+            if (enemy.isStunned())
+            {
+                Console.printSlowly("O inimigo está atordoado e não pode atacar!");
+                enemy.setStunned(false);
+                continue;
+            }
+
             if (enemy.getHealth() > 0) {
                 Console.printSlowly("\nTurno do inimigo!");
                 enemy.performAttack(player);
@@ -112,7 +126,7 @@ public class Battle {
 
             Console.readString("\nAperte Enter para o próximo turno...");
 
-        } while (enemy.getHealth() > 0 || player.getHealth() > 0);
+        } while (enemy.getHealth() > 0 && player.getHealth() > 0);
 
         if (player.getHealth() > 0) {
             Console.printSlowly("\n*** VITÓRIA! Você derrotou o inimigo! ***");
