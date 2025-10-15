@@ -8,9 +8,9 @@ public class Mage extends Entity {
     
     public Inventory inventory;
 
-    public Mage() 
+    public Mage(String name) 
     {
-        super(5,18,7,70,150);
+        super(5,18,7,70,150, name);
         this.inventory = new Inventory(List.of(new ArcaneStaff(), new DarkDagger()));
     }
 

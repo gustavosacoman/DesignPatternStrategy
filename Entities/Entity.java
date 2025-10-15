@@ -15,12 +15,13 @@ public abstract class Entity {
 
     private IWeapon equippedWeapon;
 
-    public Entity(double strength, double intelligence, double dexterity, double life, double mana) 
+    public Entity(double strength, double intelligence, double dexterity, double life, double mana, String name) 
     {
         this.strength = strength;
         this.intelligence = intelligence;
         this.dexterity = dexterity;
         this.life = life;
+        this.name = name;
         this.mana = mana;
     }
 
@@ -62,6 +63,14 @@ public abstract class Entity {
         System.out.println("Vida: " + life);
         System.out.println("Mana: " + mana);
     }
+
+    public void showStatus() {
+    String statusLine = String.format("--- %s | Vida: %.0f | Mana: %.0f ---", 
+                                      this.getClass().getSimpleName(), 
+                                      this.getHealth(), 
+                                      this.getMana());
+    System.out.println(statusLine);
+}
 
     public abstract void equipWeaponFromInventory(int index);
 
@@ -110,5 +119,10 @@ public abstract class Entity {
     public void setBleeding(boolean bleeding) 
     {
         this.bleeding = bleeding;
+    }
+    
+    public double getDexterity() 
+    {
+        return dexterity;
     }
 }

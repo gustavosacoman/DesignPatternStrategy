@@ -46,7 +46,7 @@ public class ArcaneStaff implements IWeapon {
         System.out.println(player.getName() + " ataca " + enemy.getName() + " com o " + getName() + "!");
         
         enemy.takeDamage(this.getBaseDamage());
-        player.setMana(player.getMana() - getManaCost());
+        
         if (Math.random() < 0.30) { 
             System.out.println("Explosão Arcana! O inimigo está atordoado.");
             

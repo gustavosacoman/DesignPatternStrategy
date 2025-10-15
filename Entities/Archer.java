@@ -10,9 +10,9 @@ public class Archer extends Entity {
     
     public Inventory inventory;
 
-    public Archer() 
+    public Archer(String name) 
     {
-        super(8,7,15,90,80);
+        super(8,7,15,90,80, name);
         this.inventory = new Inventory(List.of(new ElvenBow(), new DarkDagger()) );
     }
 

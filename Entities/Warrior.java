@@ -8,9 +8,9 @@ public class Warrior extends Entity {
     
     public Inventory inventory;
     
-    public Warrior() 
+    public Warrior(String name) 
     {
-        super(15,5,8,120,50);
+        super(15,5,8,120,50, name);
         this.inventory = new Inventory(List.of(new LongSword(), new WarAxe()));
     }
 
