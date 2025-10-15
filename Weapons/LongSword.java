@@ -55,5 +55,6 @@ public class LongSword implements IWeapon {
         if (randomValue < 35) { 
             enemy.setBleeding(true);
         }
+        player.setMana(player.getMana() - getManaCost());
     }
 }

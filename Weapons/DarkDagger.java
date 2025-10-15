@@ -52,6 +52,7 @@ public class DarkDagger implements  IWeapon {
         {
             enemy.takeDamage(this.getBaseDamage());
         }
+        player.setMana(player.getMana() - getManaCost());
     }
     
 }

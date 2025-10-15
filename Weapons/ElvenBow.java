@@ -44,8 +44,9 @@ public class ElvenBow implements IWeapon {
     public void attack(Entity player, Entity enemy) 
     {
         System.out.println(player.getName() + " ataca " + enemy.getName() + " com o " + getName() + "!");
-        enemy.takeDamage(this.getBaseDamage());
 
+        enemy.takeDamage(this.getBaseDamage());
+        player.setMana(player.getMana() - getManaCost());
         if (Math.random() < 0.25) { 
             System.out.println("Tiro Preciso! O inimigo está atordoado.");
         }

@@ -48,12 +48,13 @@ public class WarAxe implements IWeapon {
         enemy.setStunned(false);
         Console.printSlowly(player.getName() + " ataca " + enemy.getName() + " com o " + getName() + "!");
         enemy.takeDamage(this.getBaseDamage());
-        
+
         int numeroAleatorio = RandomGeneratorUtil.generateRandomInt(100);
 
         if (numeroAleatorio < 25) { 
             enemy.setStunned(true);
         }
+        player.setMana(player.getMana() - getManaCost());
     }
     
 }
