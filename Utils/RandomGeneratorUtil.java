@@ -3,9 +3,9 @@ package Utils;
 import java.util.Random;
 public class RandomGeneratorUtil {
     
+    private static final Random randomGenerator = new Random();
+
     public static int generateRandomInt(int bound) {
-        long seed = System.currentTimeMillis();
-        Random randomGenerator = new java.util.Random(seed);
-        return randomGenerator.nextInt(bound);
+    return randomGenerator.nextInt(bound);
     }
 }
